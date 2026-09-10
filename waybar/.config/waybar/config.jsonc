@@ -1,0 +1,191 @@
+{
+    "layer": "top",
+    "modules-left": ["hyprland/workspaces", "hyprland/language", "keyboard-state", "group/media"],
+    "modules-center": ["clock", "custom/notification"],
+    "modules-right": ["hyprland/window", "hyprland/submap","group/backlight-drawer", 
+	    "group/volume", "battery", "bluetooth", "network", "cpu", "memory"],
+    
+    "hyprland/window": {
+        "max-length": 50
+    },
+    
+    "battery": {
+        "interval": 60,
+        "format": "{capacity}% {icon}",
+        "format-icons": {
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+        }
+    },
+
+    "custom/notification": {
+	"tooltip": false,
+  	"format": "{icon}",
+  	"format-icons": {
+    		"notification": "󱅫",
+		"none": "󰂚",
+		"dnd-notification": "󰂛",
+ 		"dnd-none": "󰂛",
+    		"inhibited-notification": "󱅫",
+    		"inhibited-none": "󰂚",
+    		"dnd-inhibited-notification": "󰂛",
+    		"dnd-inhibited-none": "󰂛"
+  },
+  	"return-type": "json",
+  	"exec-if": "which swaync-client",
+  	"exec": "swaync-client -swb",
+  	"on-click": "swaync-client -t -sw",
+  	"on-click-right": "swaync-client -d -sw",
+  	"escape": true
+    },
+    
+    "hyprland/language": {
+        "format": "  {}",
+        "format-ar": "عربي",     
+        "format-en": "EN",
+        "on-click": "hyprctl switchxkblayout current next"
+    },
+    
+    "backlight": {
+    	"device": "intel_backlight", // Adjust if needed (e.g., amdgpu_bl0)
+        "format": "{percent}% {icon}",
+        "format-icons": ["󰃞", "󰃠"], // Low (<50%) and high (>50%) icons
+        "scroll-step": 5
+    },
+
+    "backlight/slider": {
+	"min": 0,
+     	"max": 100,
+    	"orientation": "horizontal", // Horizontal slider looks best inside drawers
+    	"device": "intel_backlight"
+    },
+
+    "group/backlight-drawer": {
+    	"orientation": "inherit",
+    	"drawer": {
+        	"transition-duration": 300,
+        	"transition-left-to-right": true, // Set to false if placed on the far-right edge
+        	"click-to-reveal": false // Hover to reveal
+    },
+  	  "modules": [
+        	"backlight",        // First item stays visible (the icon + percentage)
+        	"backlight/slider" // Hidden until hovered
+    	  ]
+	},
+
+   /* "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+	"device": "all-keyboards-scheme",
+        "format": {
+            "capslock": "{icon}" 
+        },
+        "format-icons": {
+            "locked": "",     
+            "unlocked": "󰌾"   
+        }
+    },*/
+    
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "", 
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "exec ghostty --title=bluetui -e bluetui"
+    },
+    
+    "cpu": {
+        "interval": 10,
+        "format": " {}%",
+        "max-length": 10,
+        "on-click": "exec ghostty --title=btop -e btop"
+    },
+   
+    "memory": {
+        "interval": 30,
+        "format": " {percentage}%",
+        "tooltip-format": "{used:0.1f}G/{total:0.1f}G used",
+        "on-click": "exec ghostty --title=htop -e htop"
+    },
+    
+    "network": {
+        "format": "",
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "󰤭", 
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "󰖪",
+        "max-length": 50,
+        "on-click": "exec nmrs"
+    },
+    
+    "clock": {
+        "format": "󰥔 {:%a, %d. %b %I:%M %p}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "format": {
+                "today": "<span color='#75f1fa'><b>{}</b></span>"
+            }
+        },
+        "on-click": "firefox https://calendar.google.com"
+    },
+    
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "ignored-sinks": ["Easy Effects Sink"],
+        "on-click": "pavucontrol"
+    },
+    
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 150,
+        "orientation": "horizontal"
+    },
+    
+    "group/volume": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ]
+    },
+    
+    "group/media": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/media-animation",
+            "custom/media-now-playing",
+            "custom/media-time"
+        ]
+    },
+    
+    "custom/media-now-playing": {
+        "exec": "~/.config/waybar/custom_modules/media/media-now-playing.sh",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-click-right": "playerctl next"
+    },
+    
+    "custom/media-animation": {
+        "exec": "~/.config/waybar/custom_modules/media/media-animation.sh",
+        "tooltip": false
+    },
+    
+    "custom/media-time": {
+        "exec": "~/.config/waybar/custom_modules/media/media-time.sh",
+        "escape": true,
+        "interval": 1,
+        "tooltip": false
+    }
+}

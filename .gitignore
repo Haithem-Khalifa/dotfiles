@@ -1,0 +1,12 @@
+# Common Neovim cache/session files
+.config/nvim/.netrwhist
+.config/nvim/lazy-lock.json
+
+# Zsh history / cache
+.zcompdump*
+.zsh_history
+
+# OS / Editor clutter
+.DS_Store
+*.swp
+*.swo
