@@ -7,10 +7,12 @@ return {
     "hrsh7th/cmp-path",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind.nvim", -- VS Code-like pictograms
   },
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+    local lspkind = require("lspkind")
 
     cmp.setup({
       snippet = {
@@ -39,6 +41,15 @@ return {
         { name = "path" },
         { name = "buffer" },
       }),
+      -- Enable VS Code-like icons in the completion menu
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = "symbol_text", -- Show icon followed by text label
+          maxwidth = 50,        -- Prevent popup from stretching too wide
+          ellipsis_char = "...", -- Truncate long entries with ellipsis
+          show_labelDetails = true,
+        }),
+      },
     })
   end,
 }
