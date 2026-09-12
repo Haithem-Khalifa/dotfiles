@@ -10,7 +10,7 @@ My personal dotfiles — the configuration I actually run on my own machine, day
 
 | Directory | Tool |
 |---|---|
-| [`ghostty/`](./ghostty) | [Ghostty](https://ghostty.org/) terminal emulator config |
+| [`ghostty/`](./ghostty/.config/ghostty) | [Ghostty](https://ghostty.org/) terminal emulator config |
 | [`hypr/`](./hypr) | [Hyprland](https://hyprland.org/) window manager config |
 | [`nvim/`](./nvim) | [Neovim](https://neovim.io/) editor config |
 | [`waybar/`](./waybar) | [Waybar](https://github.com/Alexays/Waybar) status bar config |
