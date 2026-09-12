@@ -1,0 +1,38 @@
+@define-color bg-panel rgba(24, 24, 37, 0.95);
+@define-color bg-card #1e1e2e;
+@define-color fg #cdd6f4;
+@define-color accent #89b4fa;
+@define-color border-col #313244;
+
+* {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.control-center {
+  background: @bg-panel;
+  border: 1px solid @border-col;
+  border-radius: 12px;
+  color: @fg;
+  padding: 12px;
+}
+
+.notification-row {
+  margin: 6px 0;
+}
+
+.notification-background {
+  background: @bg-card;
+  border-radius: 8px;
+  border: 1px solid @border-col;
+  padding: 10px;
+}
+
+.summary {
+  font-weight: bold;
+  color: @accent;
+}
+
+.body {
+  color: @fg;
+}
