@@ -11,9 +11,9 @@ My personal dotfiles — the configuration I actually run on my own machine, day
 | Directory | Tool |
 |---|---|
 | [`ghostty/`](./ghostty/.config/ghostty) | [Ghostty](https://ghostty.org/) terminal emulator config |
-| [`hypr/`](./hypr) | [Hyprland](https://hyprland.org/) window manager config |
-| [`nvim/`](./nvim) | [Neovim](https://neovim.io/) editor config |
-| [`waybar/`](./waybar) | [Waybar](https://github.com/Alexays/Waybar) status bar config |
+| [`hypr/`](./hypr/.config/hypr) | [Hyprland](https://hyprland.org/) window manager config |
+| [`nvim/`](./nvim/.config/nvim) | [Neovim](https://neovim.io/) editor config |
+| [`waybar/`](./waybar/.config/waybar) | [Waybar](https://github.com/Alexays/Waybar) status bar config |
 | [`zsh/`](./zsh) | [Zsh](https://www.zsh.org/) shell config |
 
 Each directory has **its own README** with setup instructions, prerequisites, and details specific to that tool — start there if you want to use a piece of this setup. This root README is just the map.
