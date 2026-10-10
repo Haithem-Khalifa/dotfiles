@@ -7,7 +7,9 @@
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: JetBrainsMono Nerd Font Propo, Cairo;
+  font-family:
+    JetBrainsMono Nerd Font Propo,
+    Cairo;
   font-size: 13px;
 }
 
@@ -29,43 +31,41 @@ window#waybar {
   background-color: @dark-9;
   color: white;
 }
-#window label{
+#window label {
   color: @highlight;
   margin: 5px 10px 5px 0px;
   padding: 5px 8px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 #language {
-    background: @dark-8;
-    color: @highlight;
-    padding: 0 10px;
-    margin: 0 5px;
-    border-radius: 4px;
+  background: @dark-8;
+  color: @highlight;
+  padding: 0 10px;
+  margin: 0 5px;
+  border-radius: 4px;
 }
 
 /* Base text style */
 #backlight {
-    padding: 0 8px;
-    color: #ffffff;
-
+  padding: 0 8px;
+  color: #ffffff;
 }
 
 /* Styling the slider track */
 #backlight-slider trough {
-    min-width: 60px;      /* Length of the slider */
-    min-height: 7px;     /* Thickness */
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 5px;
+  min-width: 60px; /* Length of the slider */
+  min-height: 7px; /* Thickness */
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 5px;
 }
 
 /* Styling the filled part of the slider */
 #backlight-slider highlight {
-    border-radius: 5px;
-    background-color: @highlight;
+  border-radius: 5px;
+  background-color: @highlight;
 }
-
 
 /*
 
@@ -104,7 +104,7 @@ window#waybar {
   font-weight: 700;
 }
 
-#clock{
+#clock {
   padding: 5px 8px;
   margin: 5px 10px 5px 10px;
 }
@@ -117,7 +117,7 @@ window#waybar {
 #memory,
 #volume,
 #backlight,
-#custom-notification{
+#custom-notification {
   border-radius: 8px;
   padding: 5px 8px;
   background: @dark-8;
@@ -161,21 +161,12 @@ window#waybar {
 
 #media {
   color: #42ff9f;
-  margin: 7px 0px 7px 80px;
-}
-
-#custom-media-animation {
-  font-size: 13px;
-  margin-right: 10px;
-}
-
-#custom-media-now-playing {
-  margin-right: 10px;
+  margin: 7px 0px 7px 7px;
 }
 
 #custom-media-time {
-  color: white; 
-  font-size: 12px;
+  color: white;
+  font-size: 11px;
 }
 
 tooltip {

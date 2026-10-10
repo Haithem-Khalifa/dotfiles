@@ -1,12 +1,12 @@
 {
     "layer": "top",
-    "modules-left": ["hyprland/workspaces", "hyprland/language", "keyboard-state", "group/media"],
+    "modules-left": ["hyprland/workspaces", "hyprland/language", "keyboard-state", "hyprland/window", "group/media"],
     "modules-center": ["clock", "custom/notification"],
-    "modules-right": ["hyprland/window", "hyprland/submap","group/backlight-drawer", 
+    "modules-right": ["hyprland/submap","group/backlight-drawer", 
 	    "group/volume", "battery", "bluetooth", "network", "cpu", "memory"],
     
     "hyprland/window": {
-        "max-length": 50
+        "max-length": 70
     },
     
     "battery": {
@@ -162,25 +162,10 @@
     "group/media": {
         "orientation": "horizontal",
         "modules": [
-            "custom/media-animation",
-            "custom/media-now-playing",
             "custom/media-time"
         ]
     },
     
-    "custom/media-now-playing": {
-        "exec": "~/.config/waybar/custom_modules/media/media-now-playing.sh",
-        "escape": true,
-        "tooltip": false,
-        "on-click": "playerctl play-pause",
-        "on-click-middle": "playerctl previous",
-        "on-click-right": "playerctl next"
-    },
-    
-    "custom/media-animation": {
-        "exec": "~/.config/waybar/custom_modules/media/media-animation.sh",
-        "tooltip": false
-    },
     
     "custom/media-time": {
         "exec": "~/.config/waybar/custom_modules/media/media-time.sh",
