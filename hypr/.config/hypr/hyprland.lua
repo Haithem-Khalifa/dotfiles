@@ -15,17 +15,17 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-	output = "eDP-1",
-	mode = "1920x1080@120.03Hz",
-	position = "auto",
+	output = "HDMI-A-1",
+	mode = "modeline 156.12 2560 2600 2632 2704 1440 1443 1448 1449 +hsync -vsync",
+	position = "0x0",
 	scale = "1.00",
 })
 
 hl.monitor({
-	output = "HDMI-A-1",
-	mode = "1280x1024@70.03Hz",
-	position = "auto",
-	scale = "1.00",
+	output = "eDP-1",
+	mode = "1920x1080@120.03Hz",
+	position = "2560x0",
+	scale = "1.20",
 })
 
 ---------------------
@@ -283,7 +283,7 @@ hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(music))
-hl.bind(mainMod .. " + J", hl.dsp.exec_cmd(intellij))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(intellij))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(clion))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(neovim))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -323,6 +323,17 @@ hl.bind(secondMod .. " + left", hl.dsp.window.move({ direction = "left" }))
 hl.bind(secondMod .. " + right", hl.dsp.window.move({ direction = "right" }))
 hl.bind(secondMod .. " + up", hl.dsp.window.move({ direction = "up" }))
 hl.bind(secondMod .. " + down", hl.dsp.window.move({ direction = "down" }))
+
+-- move focus with mainMod + vim keys
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+
+hl.bind(secondMod .. " + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(secondMod .. " + L", hl.dsp.window.move({ direction = "right" }))
+hl.bind(secondMod .. " + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(secondMod .. " + J", hl.dsp.window.move({ direction = "down" }))
 
 hl.bind(secondMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(secondMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
@@ -374,6 +385,10 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { loc
 -- brightness control using keyboard
 hl.bind("CTRL + up", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
 hl.bind("CTRL + down", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
+
+-- External monitor brightness control (Google P2718EC on bus 3)
+hl.bind("ALT + up", hl.dsp.exec_cmd("ddcutil --bus 3 setvcp 10 + 10"), { locked = true, repeating = true })
+hl.bind("ALT + down", hl.dsp.exec_cmd("ddcutil --bus 3 setvcp 10 - 10"), { locked = true, repeating = true })
 
 -- Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
@@ -432,4 +447,12 @@ hl.window_rule({
 
 	move = "20 monitor_h-120",
 	float = true,
+})
+hl.window_rule({
+	name = "opengl-preview-float",
+	match = {
+		title = "OpenGL",
+	},
+	float = true,
+	center = true,
 })
